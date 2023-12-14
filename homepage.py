@@ -61,7 +61,7 @@ def home():
             os.remove("static/images/last_file.png")
         except FileNotFoundError:
             pass
-        return render_template('homepage.html', img_data="", current_k=settings.k, current_tol=settings.tol, successful=True), 200
+        return render_template('homepage.html', img_data="", current_k=settings.k, current_tol=settings.tol, was_successful=True), 200
 
 
 def show_palette(img):
