@@ -1,0 +1,127 @@
+:root {
+    --text-clr: #40bcf4;
+    --bg-clr: rgb(25, 28, 39);
+}
+
+h1 {
+    color: var(--text-clr);
+}
+
+body {
+    background-color: var(--bg-clr);
+    color: rgba(255, 255, 255, 0.767);
+    text-align: center;
+    font-family: 'Courier New';
+    font-size: 15px;
+}
+
+input[type="submit"], textarea {
+    background-color: var(--bg-clr);
+}
+
+input[type="submit"], text {
+    color: rgba(255, 255, 255, 0.767);
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+}
+
+.slidecontainer {
+    margin-top: 50px;
+}
+
+.img-upload {
+    margin-top: 20px;
+}
+
+.colorpalette {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+
+.palette-item {
+    line-height: 80px;
+    width: 80px;
+    border: 3px white solid;
+    margin-left: -1px;
+    margin-right: -1px;
+}
+
+.warning {
+    color: tomato;
+}
+
+#generate-again {
+    margin-top: 20px;
+    color: var(--text-clr);
+    background-color: var(--bg-clr);
+    padding: 10px;
+}
+
+.info {
+    display: flex;
+}
+
+.info:hover {
+    color: tomato;
+    content: attr(title);
+}
+
+.slider-range {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.palette-setting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+#k-label {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#tol-label {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.slider-and-value {
+    display: flex;
+    width: 20%;
+}
+
+.outside-box {
+    border: 2px var(--text-clr) solid;
+    padding-top: 1%;
+    padding-bottom: 2.5%;
+}
+
+.slider {
+    width: 80%;
+    height: 10px;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--text-clr);
+    cursor: pointer;
+}

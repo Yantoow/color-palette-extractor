@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %} Color Palette Generator {% endblock %}
+
+{% block subtitle %}
+<h1>Color Palette Generator</h1><h4 style="margin-top: -15px;">by Yanto Christoffel</h4>
+{% endblock %}
+
+{% block content %}
+    <div class="outside-box">
+        <div class="img-submission">
+            <form method="post" enctype="multipart/form-data">
+                <p><input type="file" id="file" name="file" class="hidden"><input type=submit value="Generate new palette" onclick="showLoadingGif()"></p>
+            </form>
+        </div>
+        <img src="data:image/jpeg;base64,{{ img_data }}" onerror="this.style.display='none'" class="img-upload" id="img-upload" height="200"/>
+        {% if img_data: %}
+            <form method="post" enctype="multipart/form-data">
+                <input type=submit value="Generate palette (same image)" name="generate_again" id="generate-again" onclick="showLoadingGif()">
+            </form>
+
+        <div class="colorpalette">
+            {% for col in palette: %}
+                <div class="palette-item" style="background-color: {{ col }}">{{ col }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method = 'POST'>
+            <div class="slider-range">
+                <div class="slider-and-value">
+                    <div class="palette-setting">
+                        Palette Length
+                        <input type="range" min="1" max="20" value="{{ current_k }}" class="slider" id="k-slider-range">
+                    </div>
+                    <span id="k-label">{{ current_k }}</span>
+                </div>
+            <br>
+                <div class="slider-and-value">
+                    <div class="palette-setting">
+                        Color Contrast
+                        <input type="range" min="1" max="200" value="{{ current_tol }}" class="slider" id="tol-slider-range">
+                    </div>
+                    <span id="tol-label">{{ current_tol }}</span>
+                    <span class="info" title="This value controls to what extent the palette colors can be similar in values.&#013;Higher values result in a more restricted palette.">&#9432;</span>
+                </div>
+            </div>
+
+            <script>
+                const Http = new XMLHttpRequest();
+                var k_slider_range = document.getElementById("k-slider-range");
+                var k_label = document.getElementById("k-label");
+                var current_k;
+
+                k_slider_range.oninput = function() {
+                    current_k = this.value;
+                    k_label.innerHTML = this.value
+
+                    Http.open('POST', '/k_slider_update')
+                    Http.send(current_k)
+                }
+            </script>
+
+            <script>
+                var tol_slider_range = document.getElementById("tol-slider-range");
+                var tol_label = document.getElementById("tol-label");
+                var current_tol;
+
+                tol_slider_range.oninput = function() {
+                    current_tol = this.value;
+                    tol_label.innerHTML = this.value
+
+                    Http.open('POST', '/tol_slider_update')
+                    Http.send(current_tol)
+                }
+            </script>
+        </form>
+
+        <br>
+
+        {% if not was_successful: %}
+            <div class="warning">
+                WARNING: Not enough matches for this image with the current settings.
+                Lower palette length or color contrast.
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
