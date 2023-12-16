@@ -49,9 +49,15 @@ def get_palette(img, k, tol=50):
     """Constructs a palette of the top k colors from an image."""
     print(f"{img.size}, {img.format}")
 
+    # Scale images down based on their size for computational efficiency
+    w_scale_factor = img.size[0]//1000 + 1
+    h_scale_factor = img.size[1]//1000 + 1
+
+    # Use double colons to use the scaling factors as the step size
+    img = np.asarray(img)[::w_scale_factor, ::h_scale_factor]
+
     # Flatten the first two dimensions of the image (width and height)
     # Now it's just a list of RGB(A) values
-    img = np.asarray(img)
     img = img.reshape(-1, img.shape[-1])
 
     # Get the unique colors and their counts
