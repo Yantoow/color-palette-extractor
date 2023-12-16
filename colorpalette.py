@@ -53,7 +53,7 @@ def get_palette(img, k, tol=50):
     w_scale_factor = img.size[0]//1000 + 1
     h_scale_factor = img.size[1]//1000 + 1
 
-    # Use double colons to use the scaling factors as the step size
+    # Use the scaling factors as the step size
     img = np.asarray(img)[::w_scale_factor, ::h_scale_factor]
 
     # Flatten the first two dimensions of the image (width and height)
