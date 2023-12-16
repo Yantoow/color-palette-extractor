@@ -53,6 +53,8 @@ def home():
             if file and is_allowed_file(file.filename):
                 img = Image.open(file.stream)
                 img.save("static/images/last_file.png")
+            else:
+                return redirect(request.url)
 
         # Create a palette
         return show_palette(img)

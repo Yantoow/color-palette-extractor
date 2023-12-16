@@ -19,7 +19,7 @@ def filter_colors(top_colors, k, tol):
     """Makes sure the top colors don't match too much."""
     palette = []
 
-    for (col, _) in top_colors:
+    for col in top_colors:
         # Disregard the alpha value in rgba
         col = col[:3]
 
@@ -48,10 +48,20 @@ def filter_colors(top_colors, k, tol):
 def get_palette(img, k, tol=50):
     """Constructs a palette of the top k colors from an image."""
     print(f"{img.size}, {img.format}")
-    unique, counts = np.unique(img.getdata(), axis=0, return_counts=True)
-    top_colors = sorted(zip(unique, counts), key=lambda x: x[1], reverse=True)
 
-    return filter_colors(np.array(top_colors, dtype=object), k, tol)
+    # Flatten the first two dimensions of the image (width and height)
+    # Now it's just a list of RGB(A) values
+    img = np.asarray(img)
+    img = img.reshape(-1, img.shape[-1])
+
+    # Get the unique colors and their counts
+    unique, counts = np.unique(img, axis=0, return_counts=True)
+
+    # Get the top colors by sorting by the counts
+    idxs = np.argsort(-counts, axis=-1)
+    top_colors = np.column_stack((unique, counts))[idxs]
+
+    return filter_colors(top_colors, k, tol)
 
 
 def sort_palette_by_hue(palette):
