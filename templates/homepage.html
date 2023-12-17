@@ -9,10 +9,10 @@
     <div class="outside-box">
         <div class="img-submission">
             <form method="post" enctype="multipart/form-data">
-                <p><input type="file" id="file" name="file" class="hidden"><input type=submit value="Generate new palette" onclick="showLoadingGif()"></p>
+                <p><input type="file" name="file"><input type=submit value="Generate new palette" onclick="showLoadingGif()"></p>
             </form>
         </div>
-        <img src="data:image/jpeg;base64,{{ img_data }}" onerror="this.style.display='none'" class="img-upload" id="img-upload" height="200"/>
+        <img src="data:image/jpeg;base64,{{ img_data }}" onerror="this.style.display='none'" id="img-upload" height="200"/>
         {% if img_data: %}
             <form method="post" enctype="multipart/form-data">
                 <input type=submit value="Generate palette (same image)" name="generate_again" id="generate-again" onclick="showLoadingGif()">
@@ -41,7 +41,7 @@
                         <input type="range" min="1" max="200" value="{{ current_tol }}" class="slider" id="tol-slider-range">
                     </div>
                     <span id="tol-label">{{ current_tol }}</span>
-                    <span class="info" title="This value controls to what extent the palette colors can be similar in values.&#013;Higher values result in a more restricted palette.">&#9432;</span>
+                    <span class="info" title="This value controls to what extent the palette colors can be similar in RGB values.&#013;Higher values result in a more restricted palette.">&#9432;</span>
                 </div>
             </div>
 
