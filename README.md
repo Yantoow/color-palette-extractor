@@ -8,7 +8,7 @@ Creates a color palette from an input image.
    ```
 3. Choose an image to upload
 4. Click "Generate palette"
-5. Adjust the palette length and color contrast to your choosing
+5. Adjust the palette length and color contrast to your preference
 
 ### Preview
 ![preview](https://github.com/Yantoow/color-palette-extractor/blob/main/preview.png?raw=true)
