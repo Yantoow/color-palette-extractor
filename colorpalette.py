@@ -34,7 +34,6 @@ def filter_colors(top_colors, k, tol):
                 clashes_with_palette = True
                 break
 
-        # Only add non-duplicates to the palette
         if not(clashes_with_palette):
             palette.append(col)
 
