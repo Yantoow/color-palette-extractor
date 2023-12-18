@@ -1,7 +1,7 @@
 # Color Palette Extractor
-### Creates a color palette from an input image.
+Creates a color palette from an input image.
 
-#### Usage:
+### Usage:
 1. Run homepage.py
    ```sh
    python3 homepage.py
@@ -9,3 +9,6 @@
 3. Choose an image to upload
 4. Click "Generate palette"
 5. Adjust the palette length and color contrast to your choosing
+
+### Preview
+![preview](https://github.com/Yantoow/color-palette-extractor/blob/main/preview.png?raw=true)
