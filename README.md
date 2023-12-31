@@ -2,7 +2,11 @@
 Creates a color palette from an input image.
 
 ### Usage:
-1. Run homepage.py
+1. Install the dependencies
+   ```sh
+   pip install -r requirements.txt
+   ```
+2. Run homepage.py
    ```sh
    python3 homepage.py
    ```
