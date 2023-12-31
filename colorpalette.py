@@ -1,8 +1,7 @@
 """
 Author:     Yanto Christoffel
-Project:    Color Palette Generator
 
-Generates a color palette from an input image.
+Extracts a color palette from an input image.
 (img = PIL.Image.open("example.png"))
 The user can:
     - provide an input image of any format

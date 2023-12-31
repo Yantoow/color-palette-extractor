@@ -67,7 +67,7 @@ def home():
 
 
 def show_palette(img):
-    """Uses colorpalette.py to generate a color palette from an image."""
+    """Uses colorpalette.py to extract a color palette from an image."""
     print(f"Creating palette with k={settings.k}, tol={settings.tol}...")
     palette, was_successful = get_palette(img, settings.k, settings.tol)
     palette = sort_palette_by_hue(palette)
